@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Neoantigen Melanoma — Literature Index</title>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --fg: #1a1a1a;
+    --muted: #666;
+    --border: #d0cfc8;
+    --accent: #5b3a1f;
+    --hover: #f0eee5;
+    --tag-bg: #e8e3d3;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Charter, Georgia, serif;
+    background: var(--bg);
+    color: var(--fg);
+    margin: 0;
+    line-height: 1.45;
+  }
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 2rem 1rem;
+    background: #fff;
+  }
+  h1 { margin: 0 0 .25rem; font-size: 1.4rem; }
+  .subtitle { color: var(--muted); font-size: .9rem; }
+  .subtitle a { color: var(--accent); }
+  main { padding: 1.5rem 2rem; max-width: 1400px; margin: 0 auto; }
+  .controls {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr auto;
+    gap: .75rem;
+    margin-bottom: 1rem;
+    align-items: end;
+  }
+  .controls label {
+    display: block;
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--muted);
+    margin-bottom: .15rem;
+  }
+  input, select, button {
+    font-family: inherit;
+    font-size: .9rem;
+    padding: .4rem .6rem;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--fg);
+    border-radius: 3px;
+    width: 100%;
+  }
+  button {
+    cursor: pointer;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+  }
+  button.secondary { background: #fff; color: var(--fg); border: 1px solid var(--border); }
+  .stats {
+    color: var(--muted);
+    font-size: .85rem;
+    margin-bottom: .75rem;
+  }
+  .era-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem;
+    margin-bottom: 1rem;
+  }
+  .era-chip {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: .25rem .5rem;
+    border-radius: 12px;
+    font-size: .75rem;
+    cursor: pointer;
+    color: var(--fg);
+  }
+  .era-chip.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .era-chip .count { color: var(--muted); margin-left: .25rem; }
+  .era-chip.active .count { color: #f0e0c8; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid var(--border);
+  }
+  th, td {
+    text-align: left;
+    padding: .5rem .6rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    font-size: .85rem;
+  }
+  th {
+    background: var(--tag-bg);
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+  th:hover { background: #ddd6bf; }
+  th .sort-arrow { color: var(--accent); font-weight: bold; margin-left: .2rem; }
+  tr.row { cursor: pointer; }
+  tr.row:hover { background: var(--hover); }
+  tr.row.selected { background: #fdf6e3; }
+  td.year { white-space: nowrap; color: var(--muted); }
+  td.pmid a { color: var(--accent); text-decoration: none; font-family: 'SF Mono', Menlo, monospace; font-size: .8rem; }
+  td.pmid a:hover { text-decoration: underline; }
+  td.title { font-weight: 500; }
+  td.authors { color: var(--muted); font-size: .8rem; }
+  td.journal { color: var(--muted); font-size: .8rem; font-style: italic; }
+  td.eras { font-size: .7rem; }
+  td.eras .e { background: var(--tag-bg); padding: 1px 5px; margin-right: 3px; border-radius: 3px; display: inline-block; }
+  tr.detail td {
+    background: #fdf6e3;
+    padding: .8rem 1rem;
+    font-size: .85rem;
+    line-height: 1.5;
+    border-bottom: 2px solid var(--border);
+  }
+  .abstract-loading { color: var(--muted); font-style: italic; }
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    color: var(--muted);
+    font-size: .85rem;
+  }
+  .pagination button { width: auto; padding: .35rem .8rem; }
+  .badge-oa { background: #2e7d32; color: #fff; font-size: .65rem; padding: 1px 4px; border-radius: 2px; margin-left: .35rem; vertical-align: middle; }
+  footer { padding: 2rem; text-align: center; color: var(--muted); font-size: .8rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+  footer a { color: var(--accent); }
+  @media (max-width: 900px) {
+    .controls { grid-template-columns: 1fr 1fr; }
+    main { padding: 1rem; }
+    td.authors, td.journal, th.authors, th.journal { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Neoantigen Melanoma — Literature Index</h1>
+  <p class="subtitle">
+    Curated corpus for the Logan IVS-T (vaccine + VDLN) revival program.
+    4,329 papers across 20 era buckets, 1972–2026.
+    See <a href="https://github.com/laulpogan/neoantigen-melanoma-paper-index/blob/main/ERA_SUMMARIES.md">era guide</a> ·
+    <a href="MASTER_CORPUS.csv">download CSV</a> ·
+    <a href="https://github.com/laulpogan/neoantigen-melanoma-paper-index">source on GitHub</a>
+  </p>
+</header>
+
+<main>
+
+<div class="controls">
+  <div>
+    <label for="search">Search (title / authors / journal / PMID)</label>
+    <input id="search" type="search" placeholder="e.g. Berd, lifileucel, NCT0…">
+  </div>
+  <div>
+    <label for="year-from">Year ≥</label>
+    <input id="year-from" type="number" min="1970" max="2026" placeholder="1972">
+  </div>
+  <div>
+    <label for="year-to">Year ≤</label>
+    <input id="year-to" type="number" min="1970" max="2026" placeholder="2026">
+  </div>
+  <div>
+    <label for="oa">Access</label>
+    <select id="oa">
+      <option value="">all</option>
+      <option value="yes">open-access only</option>
+    </select>
+  </div>
+  <div>
+    <button id="reset" class="secondary">reset</button>
+  </div>
+</div>
+
+<div class="era-filter" id="era-filter"></div>
+
+<div class="stats" id="stats">loading…</div>
+
+<table>
+  <thead>
+    <tr>
+      <th data-sort="pmid">PMID</th>
+      <th data-sort="year" class="year">Year</th>
+      <th data-sort="title">Title</th>
+      <th data-sort="authors" class="authors">Authors</th>
+      <th data-sort="journal" class="journal">Journal</th>
+      <th>Eras</th>
+    </tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+
+<div class="pagination">
+  <span id="page-info"></span>
+  <div>
+    <button id="prev" class="secondary">← prev</button>
+    <button id="next" class="secondary">next →</button>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  Built for the Theodore F. Logan, MD vaccine + VDLN-IVS-T program ·
+  <a href="https://github.com/laulpogan/neoantigen-melanoma-paper-index">repo</a> ·
+  static site, no tracking ·
+  PMIDs link to <a href="https://pubmed.ncbi.nlm.nih.gov">PubMed</a>
+</footer>
+
+<script>
+let CORPUS = [];
+let FULL = null;          // lazy-loaded with abstracts
+let ERAS = [];
+let activeEras = new Set();
+let sortKey = 'year';
+let sortDesc = true;
+let page = 0;
+const PAGE_SIZE = 50;
+let openRow = null;
+
+const $ = id => document.getElementById(id);
+
+async function init() {
+  const [corpus, eras] = await Promise.all([
+    fetch('corpus.json').then(r => r.json()),
+    fetch('eras.json').then(r => r.json()),
+  ]);
+  CORPUS = corpus;
+  ERAS = eras;
+  renderEraFilter();
+  bindEvents();
+  render();
+}
+
+function renderEraFilter() {
+  const c = $('era-filter');
+  c.innerHTML = '';
+  ERAS.forEach(e => {
+    const chip = document.createElement('div');
+    chip.className = 'era-chip';
+    chip.dataset.era = e.slug;
+    chip.innerHTML = `${e.slug}<span class="count">${e.count}</span>`;
+    chip.onclick = () => {
+      if (activeEras.has(e.slug)) { activeEras.delete(e.slug); chip.classList.remove('active'); }
+      else { activeEras.add(e.slug); chip.classList.add('active'); }
+      page = 0;
+      render();
+    };
+    c.appendChild(chip);
+  });
+}
+
+function bindEvents() {
+  $('search').oninput = () => { page = 0; render(); };
+  $('year-from').oninput = () => { page = 0; render(); };
+  $('year-to').oninput = () => { page = 0; render(); };
+  $('oa').onchange = () => { page = 0; render(); };
+  $('reset').onclick = () => {
+    $('search').value = '';
+    $('year-from').value = '';
+    $('year-to').value = '';
+    $('oa').value = '';
+    activeEras.clear();
+    document.querySelectorAll('.era-chip').forEach(c => c.classList.remove('active'));
+    page = 0;
+    render();
+  };
+  document.querySelectorAll('th[data-sort]').forEach(th => {
+    th.onclick = () => {
+      const key = th.dataset.sort;
+      if (sortKey === key) sortDesc = !sortDesc;
+      else { sortKey = key; sortDesc = (key === 'year' || key === 'pmid'); }
+      render();
+    };
+  });
+  $('prev').onclick = () => { if (page > 0) { page--; render(); } };
+  $('next').onclick = () => { page++; render(); };
+}
+
+function filtered() {
+  const q = $('search').value.trim().toLowerCase();
+  const yFrom = parseInt($('year-from').value) || null;
+  const yTo = parseInt($('year-to').value) || null;
+  const oa = $('oa').value;
+  return CORPUS.filter(p => {
+    if (q) {
+      const blob = `${p.pmid} ${p.title} ${p.authors} ${p.journal}`.toLowerCase();
+      if (!blob.includes(q)) return false;
+    }
+    if (yFrom && (!p.year || p.year < yFrom)) return false;
+    if (yTo && (!p.year || p.year > yTo)) return false;
+    if (oa === 'yes' && p.open_access !== 'yes' && !p.pmcid) return false;
+    if (activeEras.size > 0) {
+      if (!p.eras.some(e => activeEras.has(e))) return false;
+    }
+    return true;
+  });
+}
+
+function sorted(rows) {
+  const k = sortKey;
+  const dir = sortDesc ? -1 : 1;
+  return [...rows].sort((a, b) => {
+    let av = a[k], bv = b[k];
+    if (av == null) av = '';
+    if (bv == null) bv = '';
+    if (typeof av === 'string') av = av.toLowerCase();
+    if (typeof bv === 'string') bv = bv.toLowerCase();
+    if (av < bv) return -1 * dir;
+    if (av > bv) return 1 * dir;
+    return 0;
+  });
+}
+
+function render() {
+  const rows = sorted(filtered());
+  const start = page * PAGE_SIZE;
+  const slice = rows.slice(start, start + PAGE_SIZE);
+  const tbody = $('tbody');
+  tbody.innerHTML = '';
+  slice.forEach(p => {
+    const tr = document.createElement('tr');
+    tr.className = 'row';
+    tr.innerHTML = `
+      <td class="pmid"><a href="https://pubmed.ncbi.nlm.nih.gov/${p.pmid}/" target="_blank" rel="noopener">${p.pmid}</a></td>
+      <td class="year">${p.year ?? '—'}</td>
+      <td class="title">${escapeHtml(p.title)}${p.pmcid ? '<span class="badge-oa">PMC</span>' : (p.open_access === 'yes' ? '<span class="badge-oa">OA</span>' : '')}</td>
+      <td class="authors">${escapeHtml(truncate(p.authors, 80))}</td>
+      <td class="journal">${escapeHtml(p.journal)}</td>
+      <td class="eras">${p.eras.map(e => `<span class="e">${e.split('_')[0]}</span>`).join('')}</td>
+    `;
+    tr.onclick = () => toggleDetail(tr, p);
+    tbody.appendChild(tr);
+  });
+  $('stats').textContent = `${rows.length.toLocaleString()} papers match (of ${CORPUS.length.toLocaleString()})`;
+  $('page-info').textContent = rows.length === 0 ? 'no results' : `showing ${start + 1}–${Math.min(start + PAGE_SIZE, rows.length)} of ${rows.length.toLocaleString()}`;
+  // header sort arrows
+  document.querySelectorAll('th[data-sort]').forEach(th => {
+    const arrow = th.dataset.sort === sortKey ? (sortDesc ? ' ↓' : ' ↑') : '';
+    th.querySelector('.sort-arrow')?.remove();
+    if (arrow) {
+      const s = document.createElement('span');
+      s.className = 'sort-arrow';
+      s.textContent = arrow;
+      th.appendChild(s);
+    }
+  });
+}
+
+async function toggleDetail(tr, paper) {
+  if (openRow && openRow.detail && openRow.detail.parentNode) {
+    openRow.detail.remove();
+    openRow.row.classList.remove('selected');
+    if (openRow.row === tr) { openRow = null; return; }
+  }
+  tr.classList.add('selected');
+  const detail = document.createElement('tr');
+  detail.className = 'detail';
+  detail.innerHTML = `<td colspan="6"><div class="abstract-loading">loading abstract…</div></td>`;
+  tr.parentNode.insertBefore(detail, tr.nextSibling);
+  openRow = { row: tr, detail };
+  if (!FULL) {
+    try {
+      FULL = await fetch('corpus-full.json').then(r => r.json());
+    } catch (e) {
+      detail.firstElementChild.innerHTML = '<em>could not load abstracts</em>';
+      return;
+    }
+  }
+  const full = FULL.find(p => p.pmid === paper.pmid);
+  const abstract = full?.abstract || '<em>no abstract available</em>';
+  const doi = full?.doi ? `<a href="https://doi.org/${full.doi}" target="_blank" rel="noopener">${full.doi}</a>` : '—';
+  detail.firstElementChild.innerHTML = `
+    <p><strong>${escapeHtml(paper.title)}</strong></p>
+    <p style="color:var(--muted);font-size:.8rem;">${escapeHtml(paper.authors)} · <em>${escapeHtml(paper.journal)}</em> ${paper.year ?? ''}</p>
+    <p style="font-size:.8rem;color:var(--muted);">DOI: ${doi} · PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/${paper.pmid}/" target="_blank" rel="noopener">${paper.pmid}</a>${paper.pmcid ? ` · <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/${paper.pmcid}/" target="_blank" rel="noopener">PMC ${paper.pmcid}</a>` : ''}</p>
+    <p style="font-size:.8rem;color:var(--muted);">Era tags: ${paper.eras.join(', ')}</p>
+    <p>${escapeHtml(abstract)}</p>
+  `;
+}
+
+function truncate(s, n) {
+  if (!s) return '';
+  return s.length > n ? s.slice(0, n - 1) + '…' : s;
+}
+function escapeHtml(s) {
+  if (s == null) return '';
+  return String(s).replace(/[&<>"]/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]));
+}
+
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+[
+  {
+    "slug": "01_ivs_lak_era_1988_1995",
+    "count": 200
+  },
+  {
+    "slug": "02_til_iL2_era_1988_2000",
+    "count": 46
+  },
+  {
+    "slug": "03_defined_antigen_era_1995_2005",
+    "count": 200
+  },
+  {
+    "slug": "04_act_lymphodepletion_era_2002_2015",
+    "count": 193
+  },
+  {
+    "slug": "05_neoantigen_discovery_era_2013_2020",
+    "count": 200
+  },
+  {
+    "slug": "06_personalized_vaccine_era_2017_2026",
+    "count": 199
+  },
+  {
+    "slug": "07_til_clinical_modern_era_2018_2026",
+    "count": 154
+  },
+  {
+    "slug": "08_theodore_curated",
+    "count": 55
+  },
+  {
+    "slug": "09_pan_cancer_mechanism",
+    "count": 175
+  },
+  {
+    "slug": "10_bridging_era_2006_2014",
+    "count": 297
+  },
+  {
+    "slug": "11_lifileucel_keynote942_pivotal",
+    "count": 300
+  },
+  {
+    "slug": "12_top_authors_2018plus",
+    "count": 300
+  },
+  {
+    "slug": "13_grant_infrastructure",
+    "count": 300
+  },
+  {
+    "slug": "14_stratified_2007_2012",
+    "count": 1198
+  },
+  {
+    "slug": "15_logan_published_works",
+    "count": 48
+  },
+  {
+    "slug": "16_chang_shu_lineage",
+    "count": 182
+  },
+  {
+    "slug": "17_berd_dnp_mvax",
+    "count": 143
+  },
+  {
+    "slug": "18_sondel_anti_cd3_il2",
+    "count": 113
+  },
+  {
+    "slug": "19_autol_tumor_BCG_VDLN",
+    "count": 51
+  },
+  {
+    "slug": "20_hoover_mukherji_wallack_historical",
+    "count": 127
+  }
+]
