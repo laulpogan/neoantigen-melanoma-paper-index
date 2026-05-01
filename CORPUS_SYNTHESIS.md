@@ -14,11 +14,23 @@ For deeper dives on any single era, see `lit-corpus/by-era/<era>.md` which lists
 
 ---
 
+## The lineage — per Theodore's own attribution
+
+The vaccine-primed VDLN-derived adoptive T-cell therapy paradigm is the work of **nine principal contributors** across three institutional axes:
+
+- **Historical adjuvant immunotherapy:** Herbert Hoover (Cincinnati), David Berd (Thomas Jefferson)
+- **VDLN methodology development:** Alfred E. Chang, Suyu Shu (Michigan / Cleveland Clinic Lerner), Bernard Fox, Gregory Plautz (with the Shu/Chang group, also Earle A. Chiles in Fox's case)
+- **Pittsburgh clinical translation:** John Kirkwood, Theresa Whiteside, Theodore Logan (UPCI 1986–2003)
+
+This is the lineage the proposed IU Simon revival reactivates with modern single-cell + neoantigen-prediction tooling. Tier 1 outreach targets the surviving senior figures across all three axes.
+
+---
+
 ## Through-line narrative — how we got here, in 8 acts
 
 **Act 1 (1972–1985).** Surgical oncology discovers that tumor cells + adjuvant (BCG, vaccinia) injected back into the patient sometimes provokes regression of distant disease. Hoover, Hanna, Mastrangelo, Wallack publish small adjuvant-immunotherapy series in colorectal and melanoma. Mechanism unknown — the field assumes "specific active immunotherapy" without identifying which T-cell specificities matter.
 
-**Act 2 (1986–1995).** Recombinant IL-2 makes ex-vivo lymphocyte expansion practical. Rosenberg, Lotze, Mazumder demonstrate that lymphokine-activated killer (LAK) cells and tumor-infiltrating lymphocytes (TIL) can produce objective responses in metastatic melanoma. **In parallel**, Hoover/Berd/Chang/Sondel/Logan develop a different branch: vaccinate the patient with autologous tumor + BCG, surgically harvest the *vaccine-draining lymph node* (VDLN), expand its lymphocytes ex vivo with autologous tumor + IL-2 (or anti-CD3 + IL-2), reinfuse. Theodore runs UPCI-86-13, -92-81, -93-76 in this branch. Weidmann/Logan 1993 (PMID 8402652) shows oligoclonal T-cell expansion in a responding metastasis — the first molecular-level evidence the protocol works.
+**Act 2 (1986–1995).** Recombinant IL-2 makes ex-vivo lymphocyte expansion practical. Rosenberg, Lotze, Mazumder demonstrate that lymphokine-activated killer (LAK) cells and tumor-infiltrating lymphocytes (TIL) can produce objective responses in metastatic melanoma. **In parallel**, the Hoover-Berd-Chang-Shu-Fox-Plautz-Kirkwood-Whiteside-Logan lineage develops a different branch: vaccinate the patient with autologous tumor + BCG, surgically harvest the *vaccine-draining lymph node* (VDLN), expand its lymphocytes ex vivo with autologous tumor + IL-2 (or anti-CD3 + IL-2), reinfuse. Theodore runs UPCI-86-13, -92-81, -93-76 in this branch with Kirkwood and Whiteside as senior collaborators. Weidmann/Logan 1993 (PMID 8402652) shows oligoclonal T-cell expansion in a responding metastasis — the first molecular-level evidence the protocol works.
 
 **Act 3 (1995–2005).** Field shifts from "uncharacterized tumor-specific antigen" to **defined antigens** — MART-1, gp100, tyrosinase, MAGE-A. Tetramer staining and T-cell cloning let researchers track antigen-specific responses. Peptide vaccines proliferate. Limitation recognized at the time: shared antigens are also expressed in normal tissue (tolerance) and cover only a fraction of the patient-specific antigenic landscape.
 
@@ -157,7 +169,7 @@ The earliest historical layer (1972–1995) — Herb Hoover's autologous-tumor +
 Two paradigms for sourcing therapeutic T cells:
 
 1. **TIL paradigm** (Rosenberg, Iovance, NCI Surgery Branch): extract lymphocytes from resected tumor. The cells have already been exposed to tumor antigen but have also been exposed to the tumor microenvironment's exhaustion signals.
-2. **VDLN paradigm** (Hoover-Berd-Chang-Sondel-Logan): vaccinate the patient with autologous tumor + BCG, then surgically harvest the *vaccine-draining lymph node*. The cells are antigen-experienced but have not yet trafficked to tumor — they are fresher, more stem-like, less exhausted.
+2. **VDLN paradigm** (Hoover-Berd-Chang-Shu-Logan): vaccinate the patient with autologous tumor + BCG, then surgically harvest the *vaccine-draining lymph node*. The cells are antigen-experienced but have not yet trafficked to tumor — they are fresher, more stem-like, less exhausted.
 
 Krishna 2020 (PMID 33303615) and Lowery 2022 (PMID 35113651) provide the modern evidence that stem-like, less-exhausted T cells are the responders. Krishna 2026 preprint (PMID 42052242) explicitly shows that *vaccination rescues dysfunctional ACT* — independent prospective validation that the VDLN branch was on the right track.
 

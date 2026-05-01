@@ -44,7 +44,7 @@ Each entry: PubMed ID + citation + one-line rationale + score on the three axes 
 
 ---
 
-## Tier 2 — Hoover-Berd-Chang-Sondel-Logan protocol lineage (5 papers)
+## Tier 2 — Hoover-Berd-Chang-Shu-Logan protocol lineage (5 papers)
 *These five establish the vaccine + VDLN + ex-vivo activation paradigm as a real, published clinical lineage with multi-decade follow-up.*
 
 ### 6. Chang / Yoshizawa / Sondak / Shu 1993 — *Cancer Research* — PMID [8439951](https://pubmed.ncbi.nlm.nih.gov/8439951/)
